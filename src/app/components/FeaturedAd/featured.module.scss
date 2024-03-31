@@ -1,0 +1,14 @@
+@import '../../style.module.scss';
+
+.main{
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+.heading{
+    font-size: 20px;
+    font-family: $fontPoppin;
+    color: $textLink;
+    font-weight: 600;
+}

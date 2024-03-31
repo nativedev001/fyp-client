@@ -1,0 +1,60 @@
+import { menuInterface } from "../interfaces/menu";
+
+export const MenuData:menuInterface[]=[
+    {
+        id:0,
+        title:"Dogs",
+        link:"/category"
+    },
+    {
+        id:0,
+        title:"Cats",
+        link:"/category"
+    },
+    {
+        id:0,
+        title:"Birds",
+        link:"/category"
+    },
+    {
+        id:0,
+        title:"Hens",
+        link:"/category"
+    },
+    {
+        id:0,
+        title:"Doves",
+        link:"/category"
+    },
+    {
+        id:0,
+        title:"Ducks",
+        link:"/category"
+    },
+    {
+        id:0,
+        title:"Cows",
+        link:"/category"
+    },
+    {
+        id:0,
+        title:"Peacock",
+        link:"/category"
+    },
+    {
+        id:0,
+        title:"Parrots",
+        link:"/category"
+    },
+    {
+        id:0,
+        title:"Rabbits",
+        link:"/category"
+    },
+    {
+        id:0,
+        title:"Squirrels",
+        link:"/category"
+    },
+
+]

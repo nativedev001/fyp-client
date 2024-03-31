@@ -1,0 +1,50 @@
+
+@import '../../style.module.scss';
+
+.main{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+border-radius: 16px;
+}
+
+.heading{
+    font-size: 20px;
+    font-family: $fontPoppin;
+    color: $textLink;
+    font-weight: 600;
+}
+
+.title{
+    font-size: 18px;
+    font-family: $fontPoppin;
+    color: $textLink;
+ }
+ 
+ .price{
+  font-size: 16px;
+  font-family: $fontPoppin;
+  color: $pirmaryTextColor;
+ }
+ 
+ .location{
+   font-size: 14px;
+   color: gray;
+   font-family: $fontPoppin;
+ }
+ 
+ .ago{
+ font-size: 12px;
+ font-family: $fontPoppin;
+ color: gray;
+ }
+ 
+ .tag{
+     padding: 5px 10px;
+     border-radius: 6px;
+     background-color: rgb(226, 188, 16);
+     color: black;
+     font-size: 14px;
+     font-family: $fontPoppin;
+     position: absolute;
+     right: 1px;
+     top: 5px;
+ }

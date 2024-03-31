@@ -1,0 +1,71 @@
+@import '../style.module.scss';
+
+.box{
+    width: 500px;
+    height: 400px;
+    background-color: $bg-primary;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.box_register{
+    width: 500px;
+    height: 500px;
+    background-color: $bg-primary;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading{
+    font-family: $fontPoppin;
+    font-size: 24px;
+    color: $textSecondary;
+}
+
+.inputContainer{
+    
+    margin: 10px 0px;
+
+    span{
+        font-family: $fontPoppin;
+        color: $textSecondary;
+        font-size: 16px;
+    }
+
+    input{
+        padding: 10px 5px;
+        width: 300px;
+        border-radius: 10px;
+        outline: none;
+        border: none;
+    }
+
+   
+
+}
+
+.login{
+    background-color: $textSecondary;
+    color: black;
+    font-family: $fontPoppin;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 10px 40px;
+    border-radius: 10px;
+}
+
+.textBottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0px;
+    font-family: $fontPoppin;
+    color: $textSecondary;
+
+    
+}
