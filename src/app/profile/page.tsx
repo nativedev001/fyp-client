@@ -49,10 +49,10 @@ const Profile = () => {
             </button>
           </div>
         </div>
-        <div className="flex flex-col mt-5">
+        {/* <div className="flex flex-col mt-5">
           <h1 className="text-2xl text-black text-center">Your Ads</h1>
           <Card />
-        </div>
+        </div> */}
       </div>
     </div>
   );
