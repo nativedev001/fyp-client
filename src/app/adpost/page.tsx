@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ad from "./ad.module.scss";
 import { Theme, useTheme } from "@mui/material/styles";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -11,8 +11,10 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
 import axios from "axios";
 
+
 import PhotoSizeSelectActualIcon from '@mui/icons-material/PhotoSizeSelectActual';
 import { redirect } from "next/navigation";
+import { jwtDecode } from "jwt-decode";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -23,6 +25,19 @@ const Adpost = () => {
   if(!token){
     redirect('/auth');
   }
+
+ const [userId, setUserId] = useState('')
+
+ useEffect(()=>{
+  if (token) {
+    const decodeToken:any = jwtDecode(token);
+    
+   setUserId(decodeToken._id);
+   console.log("here is userid", decodeToken._id)
+  }
+ },[token])
+
+
  
   const [userData, setUserData] = useState({
     title: "",
@@ -47,29 +62,29 @@ const handleSelectFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
 
 
 
-// const submitForm = async (e:any) => {
-//   e.preventDefault()
+
+
+// const submitForm = async (e: any) => {
+//   e.preventDefault();
 //   try {
-//     const formData = new FormData();
+//     const requestData = {
+//       title: userData.title,
+//       category: userData.category,
+//       subcategory: userData.subcategory,
+//       price: userData.price,
+//       images: selectedFiles, 
+//       desc: userData.desc,
+//       address: userData.address,
+//       name: userData.name,
+//       phone: userData.phone,
+//       featured: 0,
+//       approve: 0, 
 
-//     formData.append('title', userData.title);
-//     formData.append('category', userData.category);
-//     formData.append('subcategory', userData.subcategory);
-//     formData.append('price', userData.price);
-//     formData.append('desc', userData.desc);
-//     formData.append('address', userData.address);
-//     formData.append('name', userData.name);
-//     formData.append('phone', userData.phone);
-//     formData.append('featured', '0'); 
-//     formData.append('approve', '0'); 
+//     };
 
-//     if (selectedFiles) {
-//       for (let i = 0; i < selectedFiles.length; i++) {
-//         formData.append('images', selectedFiles[i]);
-//       }
-//     }
-    
-//     const response = await axios.post('http://localhost:8000/api/forms/form', formData,);
+//     console.log("ad data", requestData)
+
+//     const response = await axios.post('http://localhost:8000/api/forms/form', requestData);
 
 //     console.log(response.data);
 //   } catch (error) {
@@ -77,32 +92,41 @@ const handleSelectFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
 //   }
 // };
 
+
+
 const submitForm = async (e: any) => {
   e.preventDefault();
   try {
-    const requestData = {
-      title: userData.title,
-      category: userData.category,
-      subcategory: userData.subcategory,
-      price: userData.price,
-      images: selectedFiles, 
-      desc: userData.desc,
-      address: userData.address,
-      name: userData.name,
-      phone: userData.phone,
-      featured: 0, // Default value for featured
-      approve: 0, // Default value for approve
+    const formData = new FormData();
 
-    };
+    formData.append('title', userData.title);
+    formData.append('category', userData.category);
+    formData.append('subcategory', userData.subcategory);
+    formData.append('price', userData.price);
+    formData.append('desc', userData.desc);
+    formData.append('address', userData.address);
+    formData.append('name', userData.name);
+    formData.append('phone', userData.phone);
+    formData.append('featured', '0');
+    formData.append('approve', '0');
+    formData.append('userId', userId);
+    formData.append('images', selectedFiles[0]);  // Assuming selectedFiles is an array with the File object
 
-    const response = await axios.post('http://localhost:8000/api/forms/form', requestData);
+    console.log("ad data", formData);
+
+    const response = await axios.post('http://localhost:8000/api/forms/form', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
 
     console.log(response.data);
+    redirect('/adpost')
   } catch (error) {
     console.error('Error:', error);
   }
 };
-  
+
 
 
 

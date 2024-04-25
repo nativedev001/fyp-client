@@ -1,0 +1,29 @@
+@import '../../style.module.scss';
+
+.active {
+    color: $bg-primary;
+    font-size: 18px !important;
+  }
+  
+  .inactive {
+    color: $pirmaryTextColor;
+    font-size: 18px !important;
+  }
+  
+ 
+  .pagestyle{
+    min-height: 100vh;
+  }
+  
+
+  .profilecard{
+    box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+  }
+
+  .descbox{
+    box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+  }

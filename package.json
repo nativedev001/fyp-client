@@ -22,7 +22,8 @@
     "react-dom": "^18",
     "react-material-ui-carousel": "^2.3.11",
     "scss": "^0.2.4",
-    "swiper": "^11.0.6"
+    "swiper": "^11.0.6",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/node": "^20",

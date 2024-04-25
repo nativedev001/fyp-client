@@ -5,7 +5,7 @@ import auth from './auth.module.scss';
 import axios from 'axios';
 import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation';
-
+import { jwtDecode } from "jwt-decode";
 
 const Auth = () => {
 
@@ -34,6 +34,7 @@ const Auth = () => {
  const response = await axios.post('http://localhost:8000/api/users/auth/register',userData)
  console.log("this is response", response);
 
+ setState(true)
     }catch(err){
  console.error("error while register", err)
     }
@@ -51,7 +52,7 @@ const Auth = () => {
     getUserData(token);
     router.push('/')
    }catch(err){
-     console.log('error occur while login')
+     console.log('error occur while login', err)
    }
   }
 

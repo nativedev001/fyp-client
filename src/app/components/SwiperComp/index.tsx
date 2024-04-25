@@ -1,14 +1,32 @@
 'use client'
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { AdData } from '@/app/libs/AdsDummyData';
 import card from './card.module.scss'
 import Image from 'next/image';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import axios from 'axios';
 
 
 const SwiperComp = () => {
+
+  const [formData, setFormData] = useState([]);
+
+  const fetchformData=()=>{
+     axios.get('http://localhost:8000/api/forms/allads').then(response=>{
+      const data = response.data;
+      console.log("here is data", data)
+      setFormData(data);
+    }).catch(error=>{
+      console.log("error occurd", error)
+    });
+  }
+
+  useEffect(()=>{
+fetchformData();
+  },[])
+
   return (
    <div style={{maxWidth:"1200px", margin:'auto'}} className='pt-20'>
     <h1 className={`${card.heading} pb-5`}>Recent Ads</h1>
@@ -19,12 +37,15 @@ const SwiperComp = () => {
       onSwiper={(swiper) => console.log(swiper)}
     >
       {
-        AdData.map((item)=>(
+        formData.map((item:any)=>(
             <SwiperSlide>
-              <Card title={item.title} price={item.price} location={item.location}
-                 ago={item.ago}
+              <Card title={item.title} price={item.price} location={item.address}
+                 ago={item.phone}
                  tag={item.tag}
-                 image={item.image} 
+               image={
+                item.images[0].url
+               }
+                href={`/addata/uid?id=${item._id}`}
                 />
             </SwiperSlide>
         ))

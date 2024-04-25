@@ -8,6 +8,6 @@ module.exports = {
       },
     nextConfig,
     images: {
-      domains: ['localhost'],
+      domains: ['localhost', 'res.cloudinary.com'],
     },
 }
